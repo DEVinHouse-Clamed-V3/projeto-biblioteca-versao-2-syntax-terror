@@ -1,7 +1,13 @@
-import { Router } from 'express';
+import { Router } from "express";
+import LeitorController from "../controllers/LeitorController";
 
-const leitorRoutes = Router();
+const leitorRouter = Router();
+const leitorController = new LeitorController();
 
-/* Implemente aqui os métodos que irão atender as requisições HTTP para a entidade Leitor. */
+leitorRouter.get("/", leitorController.getAll);
+leitorRouter.get("/:id", leitorController.getOne);
+leitorRouter.post("/", leitorController.create);
+leitorRouter.delete("/:id", leitorController.delete);
+leitorRouter.put("/:id", leitorController.update);
 
-export default leitorRoutes;
+export default leitorRouter;
